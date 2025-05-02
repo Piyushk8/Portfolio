@@ -23,7 +23,7 @@ const NavBar = () => {
               /
             </button>
             <h1 className="text-base sm:text-lg font-bold font-mono">
-              Piyush Kumar.
+              <a href="/">Piyush Kumar.</a>
             </h1>
           </div>
 
