@@ -86,6 +86,31 @@
 }
 
 
+.underline-animate {
+  position: relative;
+  display: inline-block;
+}
+
+.underline-animate::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+  background-color: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease-in-out;
+}
+
+.underline-animate:hover::after {
+  transform: scaleX(1);
+  transform-origin: right;
+}
+
+
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

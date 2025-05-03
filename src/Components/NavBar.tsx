@@ -39,15 +39,15 @@ const NavBar = () => {
         {/* Desktop: Centered Nav + Toggle */}
         <div className="hidden md:flex flex-1 justify-center items-center mt-4 md:mt-0">
           <NavigationMenu>
-            <NavigationMenuList className="flex space-x-8 font-mono text-sm md:text-base">
+            <NavigationMenuList className=" flex space-x-8 font-mono text-sm md:text-base">
               <NavigationMenuItem>
-                <Link href="#about">About</Link>
+                <Link href="#about" className="underline-animate">About</Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link href="#projects">Projects</Link>
+                <Link href="#projects" className="underline-animate">Projects</Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link href="#skills">Skills</Link>
+                <Link href="#skills" className="underline-animate">Skills</Link>
               </NavigationMenuItem>
             </NavigationMenuList>
           </NavigationMenu>
@@ -60,7 +60,7 @@ const NavBar = () => {
 
         {/* Mobile Dropdown */}
         {isMenu && (
-          <div className="md:hidden top-10 absolute self-end w-1/2 sm:w-1/3 flex flex-col items-center text-md  text-shadow-violet-400 text-shadow-sm  bg-background rounded-2xl mt-4 p-6 border space-y-4 font-mono">
+          <div className="md:hidden bg-background top-10 absolute self-end w-1/2 sm:w-1/3 flex flex-col items-center text-md  text-shadow-violet-400  rounded-2xl mt-4 p-6 border space-y-4 font-mono">
             <Link href="#about">About</Link>
             <Link href="#projects">Projects</Link>
             <Link href="#skills">Skills</Link>
