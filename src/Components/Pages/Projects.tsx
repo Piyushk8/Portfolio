@@ -25,6 +25,10 @@ import {
   SiCss3,
   SiVite,
   SiReactquery,
+  SiLangchain,
+  SiGooglegemini,
+  SiWebrtc,
+  SiCanvas
 } from "react-icons/si";
 import HeroVideoDialog from "../magicui/hero-video-dialog";
 import VideoPopup from "../videoPlayer";
@@ -51,6 +55,10 @@ const techIcons: Record<string, JSX.Element> = {
   CSS: <SiCss3 color="#1572B6" />,
   Framer: <SiFramer color="#0055FF" />,
   Vite: <SiVite color="#646CFF" />,
+  Langchain:<SiLangchain color="47A248"/>,
+  Gemini:<SiGooglegemini color="0db7ed"/>,
+  WebRTC:<SiWebrtc color=""/>,
+  Canvas:<SiCanvas color="0db7ed"/>
 };
 
 const projects = [
@@ -62,6 +70,24 @@ const projects = [
     demo: "",
     live: "https://snaply-eight.vercel.app/",
     href: "https://github.com/Piyushk8/Snaply",
+  },
+   {
+    title: "Just A Meet",
+    description: "A seamless video conferencing app for quick and secure meetings.",
+    // image: jam,
+    tech: ["Nextjs", "TypeScript", "WebRTC","Canvas","Tiled","Socketio"],
+    demo: "",
+    live: "https://jam-just-a-meet.vercel.app/", // add if deployed
+    href: "https://github.com/Piyushk8/JAM---Just-A-Meet",
+  },
+  {
+    title: "AI Agent",
+    description: "An experimental project with AI-powered agents for task automation and reasoning.",
+    // image: aiAgent,
+    tech: ["TypeScript", "Nextjs", "Gemini", "Langchain"],
+    demo: "",
+    live: "https://ai-agent-psi-two.vercel.app/", // add if deployed
+    href: "https://github.com/Piyushk8/Ai-agent",
   },
   {
     title: "Chatties",
