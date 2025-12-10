@@ -1,120 +1,105 @@
 "use client";
-
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
+import { useState } from "react";
 import {
-  SiDocker,
-  SiMongodb,
-  SiExpress,
-  SiReact,
-  SiNodedotjs,
-  SiPostgresql,
-  SiJest,
-  SiVitest,
-  SiCloudflare,
-  SiNginx,
-  SiJavascript,
-  SiTypescript,
-  SiPython,
-  SiHtml5,
-  SiCss3,
-  SiNextdotjs,
-  SiTailwindcss,
-  SiFramer,
-  SiGraphql,
-  SiSocketdotio,
-  SiPrisma,
-  SiGit,
-  SiCplusplus,
-  SiDrizzle,
+  SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiCss3, SiFramer,
+  SiFigma, SiNotion, SiJavascript, SiGit, SiDocker, SiNodedotjs,
+  SiPostgresql, SiMongodb, SiPython, SiLinux
 } from "react-icons/si";
-import Image from "next/image";
 
-const categories = {
-  Frontend: [
-    { name: "TypeScript", icon: <SiTypescript className="text-blue-600" /> },
-    { name: "React", icon: <SiReact className="text-sky-400" /> },
-    {
-      name: "Next.js",
-      icon: <SiNextdotjs className="text-black dark:text-white" />,
-    },
-    { name: "Tailwind CSS", icon: <SiTailwindcss className="text-cyan-400" /> },
-    { name: "Framer Motion", icon: <SiFramer className="text-pink-500" /> },
-  ],
-  Backend: [
-    { name: "Node.js", icon: <SiNodedotjs className="text-green-700" /> },
-    { name: "Express.js", icon: <SiExpress className="text-gray-700" /> },
-    { name: "GraphQL", icon: <SiGraphql className="text-pink-500" /> },
-    {
-      name: "Socket.io",
-      icon: <SiSocketdotio className="text-black dark:text-white" />,
-    },
-  ],
-  Tools: [
-    { name: "Jest", icon: <SiJest className="text-red-500" /> },
-    { name: "Vitest", icon: <SiVitest className="text-yellow-400" /> },
-    {
-      name: "Drizzle",
-      icon: <SiDrizzle className="text-black dark:text-white" />,
-    },
-    {
-      name: "Prisma",
-      icon: <SiPrisma className="text-black dark:text-white" />,
-    },
-  ],
-  Database: [
-    { name: "MongoDB", icon: <SiMongodb className="text-green-500" /> },
-    { name: "PostgreSQL", icon: <SiPostgresql className="text-blue-700" /> },
-  ],
-  DevOps: [
-    { name: "Docker", icon: <SiDocker className="text-blue-500" /> },
-    { name: "NGINX", icon: <SiNginx className="text-green-600" /> },
-    { name: "Cloudflare", icon: <SiCloudflare className="text-orange-500" /> },
-    { name: "Git", icon: <SiGit className="text-red-600" /> },
-  ],
-  other: [
-    { name: "Python", icon: <SiPython className="text-yellow-600" /> },
-    { name: "C++", icon: <SiCplusplus className="text-blue-600" /> },
-  ],
-};
+const skills = [
+  { name: "React", icon: SiReact, color: "#61DAFB" },
+  { name: "Next.js", icon: SiNextdotjs, color: "#ffffff" },
+  { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
+  { name: "Tailwind CSS", icon: SiTailwindcss, color: "#06B6D4" },
+  { name: "CSS3", icon: SiCss3, color: "#1572B6" },
+  { name: "Framer Motion", icon: SiFramer, color: "#0055FF" },
+  { name: "Figma", icon: SiFigma, color: "#F24E1E" },
+  { name: "Notion", icon: SiNotion, color: "#ffffff" },
+  { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
+  { name: "Git", icon: SiGit, color: "#F05032" },
+  { name: "Docker", icon: SiDocker, color: "#2496ED" },
+  { name: "Node.js", icon: SiNodedotjs, color: "#339933" },
+  { name: "PostgreSQL", icon: SiPostgresql, color: "#336791" },
+  { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
+  { name: "Python", icon: SiPython, color: "#3776AB" },
+  { name: "Linux", icon: SiLinux, color: "#FCC624" },
+];
 
-const SkillsSection = () => {
+export default function SkillsSection() {
+  const [hovered, setHovered] = useState<string | null>(null);
+
   return (
-    <section className="py-10 px-6 bg-gradient-to-b from-violet-100 via-white to-zinc-50 dark:from-zinc-900 dark:via-black dark:to-zinc-800 text-center">
-      <motion.h2
-        className="text-4xl font-bold mb-12 text-violet-700 dark:text-violet-300"
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-      >
-        My Tech Stack
-      </motion.h2>
+    <section className="relative w-full py-32 dark:bg-black text-white overflow-hidden">
 
-      {Object.entries(categories).map(([category, skills]) => (
-        <div key={category} className="mb-12">
-          <h3 className="text-xl font-semibold text-zinc-700 dark:text-zinc-100 mb-6">
-            {category}
-          </h3>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6 justify-items-center">
-            {skills.map((skill, i) => (
+      {/* Title */}
+      <div className="text-center mb-24">
+        <p className="uppercase tracking-[8px] text-foreground dark:text-gray-400 text-sm">
+          MY SKILLS
+        </p>
+
+        <h1 className="text-6xl text-foreground font-serif font-bold mt-3">
+          The Secret
+          <span className="bg-linear-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent ml-2">
+            Sauce
+          </span>
+        </h1>
+      </div>
+
+      {/* Icons Row */}
+      <div className="flex flex-wrap justify-center gap-4 px-6 max-w-6xl mx-auto">
+        {skills.map((skill, index) => {
+          const Icon = skill.icon;
+          const isHover = hovered === skill.name;
+
+          return (
+            <motion.div
+              key={skill.name}
+              onHoverStart={() => setHovered(skill.name)}
+              onHoverEnd={() => setHovered(null)}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: index * 0.05 }}
+              className="relative"
+            >
+              {/* Tile */}
               <motion.div
-                key={skill.name}
-                className="flex flex-col items-center justify-center p-4 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-2xl shadow hover:scale-105 transition-all"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.05 }}
-                viewport={{ once: true }}
+                animate={
+                  isHover
+                    ? { scale: 1.12, y: -6, boxShadow: `0 0 25px ${skill.color}70` }
+                    : { scale: 1, y: 0 }
+                }
+                transition={{ type: "spring", stiffness: 150, damping: 12 }}
+                className="
+                  w-20 h-20 rounded-2xl bg-zinc-900/70 backdrop-blur-xl border border-white/10
+                  shadow-lg flex items-center justify-center cursor-pointer
+                "
               >
-                <div className="text-xl mb-2">{skill.icon}</div>
-                <p className="text-sm font-medium text-zinc-800 dark:text-zinc-200">
-                  {skill.name}
-                </p>
+                <Icon className="text-4xl transition-all" style={{ color: skill.color }} />
               </motion.div>
-            ))}
-          </div>
-        </div>
-      ))}
+
+              {/* Tooltip (name) */}
+            {isHover && (
+  <motion.div
+    initial={{ opacity: 0, y: 8 }}
+    animate={{ opacity: 1, y: 0 }}
+    className="
+      absolute left-1/2 -bottom-10 -translate-x-1/2 px-3 py-1
+      rounded-md bg-black/80 backdrop-blur-md border border-white/10
+      text-sm font-medium text-gray-200 whitespace-nowrap
+      z-999 shadow-lg pointer-events-none
+    "
+  >
+    {skill.name}
+  </motion.div>
+)}
+
+
+             
+            </motion.div>
+          );
+        })}
+      </div>
     </section>
   );
-};
-
-export default SkillsSection;
+}
