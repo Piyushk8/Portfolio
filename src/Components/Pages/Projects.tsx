@@ -72,11 +72,13 @@ const projects = [
     ],
     tech: ["TypeScript", "Nextjs", "TanstackQuery", "Cloudinary"],
     demo: "",
+    preview: true,
     live: "https://snaply-eight.vercel.app/",
     href: "https://github.com/Piyushk8/Snaply",
   },
   {
     title: "Just A Meet",
+    preview: true,
     description:
       "A seamless video conferencing app for quick and secure meetings",
     features: [
@@ -92,6 +94,7 @@ const projects = [
   },
   {
     title: "AI Agent",
+    preview: false,
     description:
       "An experimental project with AI-powered agents for task automation and reasoning",
     features: [
@@ -107,6 +110,7 @@ const projects = [
   },
   {
     title: "Chatties",
+    preview: true,
     description: "Scalable Realtime Chat App with PERN Stack",
     features: [
       "PostgreSQL for robust data persistence",
@@ -130,6 +134,7 @@ const projects = [
   {
     title: "ChatterBox",
     description: "Realtime ChatApp with MERN Stack",
+    preview: false,
     features: [
       "MongoDB for flexible document storage",
       "RTK Query for efficient state management",
@@ -159,6 +164,7 @@ const projects = [
       "Terminal access via xterm.js",
       "Nginx reverse proxy for routing",
     ],
+    preview: true,
     tech: [
       "TypeScript",
       "Docker",
@@ -173,9 +179,8 @@ const projects = [
   },
 ];
 import { Space_Grotesk } from "next/font/google";
+import ProjectPreview from "../projectPreview";
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], weight: "700" });
-
-
 
 export default function Projects() {
   const [showAll, setShowAll] = useState(false);
@@ -226,6 +231,7 @@ export default function Projects() {
             <div className="relative z-10 grid md:grid-cols-2 gap-8 items-start">
               {/* Left Column - Info */}
               <div className="space-y-6">
+                {project.preview && <ProjectPreview title={project.title} liveUrl={project.demo}/>}
                 {/* Title & Description */}
                 <div>
                   <h3
